@@ -63,6 +63,7 @@ def sw19_byte(reg):
 
 # print("key byte = ", result[0], "register = ", result[1])
 
+print(reg1, reg2)
 result = sw12_byte(reg1)
 key1 = result[0]
 reg1 = result[1]
@@ -73,6 +74,18 @@ key = (int(key1,2) + int(key2,2))%256
 print(key1, int(key1,2))
 print(key2, int(key2,2))
 print(key)
+print(reg1, reg2)
+result = sw12_byte(reg1)
+key1 = result[0]
+reg1 = result[1]
+result = sw19_byte(reg2)
+key2 = result[0]
+reg2 = result[1]
+key = (int(key1,2) + int(key2,2))%256
+print(key1, int(key1,2))
+print(key2, int(key2,2))
+print(key)
+print(reg1, reg2)
 
 
 
