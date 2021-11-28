@@ -81,20 +81,32 @@ for reg1_1byte in range(256):
                 reg1 = generate_reg1(reg1_3bits,reg1_1byte)
                 # print(reg1)
                 for reg2_2byte in range(256):
-                    reg2 = generate_reg2('11',reg2_2byte,reg1_1byte)
+                    reg2 = generate_reg2('10',reg2_2byte,reg2_1byte)
                     result = sw12_byte(reg1)
                     result = sw12_byte(result[1])
                     key1 = result[0]
-                    # reg1 = result[1]
+                    reg1 = result[1]
                     result = sw19_byte(reg2)
-                    result = sw12_byte(result[1])
+                    result = sw19_byte(result[1])
                     key2 = result[0]
-                    # reg2 = result[1]
+                    reg2 = result[1]
                     key_2bytes = (int(key1,2) + int(key2,2))%256
-                    print('key1 = ', key1, 'key2 = ',key2, "key drugi bajt = ", key_2bytes)
+                    # print('key1 = ', key1, 'key2 = ',key2, "key drugi bajt = ", key_2bytes)
                     if key_2bytes == lfsr_keys[1]:
-                        print("reg1 = ",reg1)
-                        print("reg2 = ",reg2)
+                        # print('reg1 = ', reg1, 'key1 = ',key1, 'reg2 = ',reg2, 'key2 = ', key2)
+                        for i in range(2,8):
+                            result = sw12_byte(reg1)
+                            key1 = result[0]
+                            reg1 = result[1]
+                            result = sw19_byte(reg2)
+                            key2 = result[0]
+                            reg2 = result[1]
+                            last_key = (int(key1,2) + int(key2,2))%256
+                            # print('reg1 = ', reg1, 'key1 = ',key1, 'reg2 = ',reg2, 'key2 = ', key2, 'last_key = ',last_key)
+                            if last_key == lfsr_keys[i]:
+                                print('reg1 = ', reg1, 'key1 = ',key1, 'reg2 = ',reg2, 'key2 = ', key2, 'last_key = ',last_key)
+                        # print("reg1 = ",reg1)
+                        # print("reg2 = ",reg2)
                         
 
 
