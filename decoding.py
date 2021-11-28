@@ -43,9 +43,9 @@ def decode(reg1,reg2,encrypt):
     key2 = result[0]
     reg2 = result[1]
     key = (int(key1,2) + int(key2,2))%255 
-    print('encrypt = ',int(encrypt.hex(),16), 'key = ',key)
+    # print('encrypt = ',int(encrypt.hex(),16), 'key = ',key)
     plain = int(encrypt.hex(),16) ^ key
-    print(hex(plain))
+    # print(hex(plain))
     return reg1, reg2, hex(plain)
 
 
@@ -61,8 +61,8 @@ while znak:
     reg1 = result[0]
     reg2 = result[1]
     decoded_byte = result[2]
-    print(decoded_byte)
-    f2.write(b'decoded_byte')
+    print(decoded_byte.encode())
+    f2.write(decoded_byte.encode())
     znak = f1.read(1)
 
 f1.close()
