@@ -51,7 +51,7 @@ def decode(reg1,reg2,encrypt):
     key = (int(key1,2) + int(key2,2))%255 
     # print('key = ',key1, 'key2 =', key2, 'key =',hex(key))
     plain = int(encrypt.hex(),16) ^ key
-    # print(hex(plain))
+    # print(plain)
     # print('encrypt = ',hex(int(encrypt.hex(),16)), 'key = ',hex(key), 'plain =', hex(plain), "char = ", chr(plain))
     return reg1, reg2, plain
 
@@ -65,18 +65,30 @@ reg2 = seed2
 znak = f1.read(1)
 # for i in range(8):
 while znak:
-    # result = decode(reg1,reg2,znak)
-    # reg1 = result[0]
-    # reg2 = result[1]
-    # decoded_byte = result[2]
+    print(znak)
+    result = decode(reg1,reg2,znak)
+    reg1 = result[0]
+    reg2 = result[1]
+    decoded_byte = result[2]
+    decoded_byte = int(decoded_byte)
+    print(decoded_byte)
+    decoded_byte = decoded_byte.to_bytes(1,byteorder='big')
+    # decoded_byte = chr(decoded_byte)
+    # decoded_byte = decoded_byte.encode('utf-8')
+    print(decoded_byte)
     # print(hex(decoded_byte))
-    # f2.write(chr(decoded_byte))
-    decoded_byte = hex(znak)
-    print(decoded_byte, chr(decoded_byte))
-    f2.write(znak)
+    f2.write(decoded_byte)
+    # decoded_byte = znak
+    # print(decoded_byte)
+    # decoded_byte = int(decoded_byte.hex(),16)
+    # print(decoded_byte)
+    # decoded_byte = hex(decoded_byte)
+    # decoded_byte = chr(int(decoded_byte,16))
+    # decoded_byte = decoded_byte.encode('utf-8')
+    # print(decoded_byte)
+    # f2.write(decoded_byte)
     znak = f1.read(1)
 
 f1.close()
 f2.close()
 
-   
