@@ -81,7 +81,7 @@ def sw19_byte(reg):
 
 for reg1_1byte in range(256):
     for reg2_1byte in range(256):
-        key = (reg1_1byte + reg2_1byte)%255                 # UWAGA!!! zmiana na modulo 255 zamiast 256
+        key = (reg1_1byte + reg2_1byte)%255                 
         if key == lfsr_keys[0]:                              #233:
             # print("reg1 = ",reg1_1byte)
             # print("reg2 = ",reg2_1byte)
@@ -101,7 +101,7 @@ for reg1_1byte in range(256):
                         result = sw19_byte(result[1])
                         key2 = result[0]
                         reg2 = result[1]
-                        key_2bytes = (int(key1,2) + int(key2,2))%255                                # UWAGA!!! zmiana na modulo 255 zamiast 256
+                        key_2bytes = (int(key1,2) + int(key2,2))%255                                
                         # print('key1 = ', key1, 'key2 = ',key2, "key drugi bajt = ", key_2bytes)
                         if key_2bytes == lfsr_keys[1]:
                             # print('reg1 = ', reg1, 'key1 = ',key1, 'reg2 = ',reg2, 'key2 = ', key2)
@@ -113,7 +113,7 @@ for reg1_1byte in range(256):
                                 result = sw19_byte(reg2)
                                 key2 = result[0]
                                 reg2 = result[1]
-                                last_key = (int(key1,2) + int(key2,2))%255                                                           # UWAGA!!! zmiana na modulo 255 zamiast 256
+                                last_key = (int(key1,2) + int(key2,2))%255                                                           
                                 # print('reg1 = ', reg1, 'key1 = ',key1, 'reg2 = ',reg2, 'key2 = ', key2, 'last_key = ',last_key)
                                 if last_key == lfsr_keys[i]:
                                     seed_id = seed_id + 1
