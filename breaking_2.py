@@ -86,11 +86,11 @@ for reg1_1byte in range(256):
             # print("reg1 = ",reg1_1byte)
             # print("reg2 = ",reg2_1byte)
             for reg1_4bits in range(16):
-                reg1 = generate_reg1(reg1_4bits,reg1_1byte)
-                # print(reg1)
-                seed1 = reg1
+                 # print(reg1)
                 for reg2_3bits in range(8):
                     for reg2_2byte in range(256):
+                        reg1 = generate_reg1(reg1_4bits,reg1_1byte)
+                        seed1 = reg1
                         reg2 = generate_reg2(reg2_3bits,reg2_2byte,reg2_1byte)  
                         seed2 = reg2  
                         result = sw12_byte(reg1)
